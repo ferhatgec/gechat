@@ -1,0 +1,32 @@
+{member.nickname} has been kicked.
+#kick <member>, you forgot <member> to specify which member to kick.
+#ban <member> <reason>, you forgot <reason> to specify reason of ban.
+{user.nickname} has been unbanned.
+{member.nickname} has been banned.
+#ban <member> <reason>, you forgot <member> or <reason> to specify which member to ban.
+#unban <member>, you forgot <member> to specify which member to unban.
+{member.nickname}'s {role} role taken by {client.nickname}.
+{member.nickname} assigned with {role} role by {client.nickname}.
+{client.nickname} has not enough privileges to take the {role} from {member.nickname}
+{command_lowercase} <member>, you forget <member> to specify which member to assign the {role} role.
+{len(current_members)} members total.
+members found in total.
+password for {client.nickname} changed to {client.password} (only visible to you)
+#changepassword <password>, you forget to specify the password (only visible to you)
+you were banned from {channel.name} channel before.
+you have not enough privileges to access this channel.
+#changelanguage <language>, you missed <language> argument.
+{client.nickname} left the chat. see you later!
+welcome, {nickname}. long time no see!
+a new member, {nickname}!
+#userinfo <member>, you missed <member> argument.
+#changeabout <text>, you missed <text> argument. maybe you tried to clear your about; just add random character if you want to clear your about section. if you are math lover, then you probably love greek symbols.
+#searchincurrentmembers <member>, you missed <member> argument.
+#changechannel <channel>, you missed <channel> argument.
+you reached the maximum message limit in a minute.
+message that you are trying to send is too long to handle.
+there's no such a language that you are looking for.
+you reached the maximum usage of #history in a hour.
+you reached the maximum usage of #feedback in a hour.
+#feedback <text>, you missed <text> argument.
+thank you for giving us bunch of feedbacks! (every one of them will be read)

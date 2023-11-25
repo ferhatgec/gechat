@@ -1,0 +1,8 @@
+_ =
+    nickname_length_limit;15;
+    password_length_limit;20;
+    message_length_limit;256;
+    messages_per_minute;30;
+    history_command_per_hour;1;
+    feedback_command_per_hour;1;
+end; _;

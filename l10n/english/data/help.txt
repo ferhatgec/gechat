@@ -1,0 +1,27 @@
+welcome to gechat server!
+current commands are:
+ - #help
+ - #logout
+ - #kick
+ - #ban
+ - #unban
+ - #giveadmin
+ - #givemoderator
+ - #takeadmin
+ - #takemoderator
+ - #currentmembers
+ - #servertime
+ - #searchincurrentmembers
+ - #changepassword
+ - #about
+ - #announcements
+ - #rules
+ - #changechannel
+ - #changeabout
+ - #userinfo
+ - #syncserver
+ - #history
+ - #feedback
+ - #channels
+
+note: empty lines won't be accepted as message.

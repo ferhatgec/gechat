@@ -1,0 +1,32 @@
+{member.nickname} atıldı.
+#kick <üye>, hangi <üye>'yi atacağınızı belirtmediniz.
+#ban <üye> <sebep>, banlamanın  <sebep>'ini belirtmediniz.
+{user.nickname} üyesinin banı kaldırıldı.
+{member.nickname} üyesi banlandı.
+#ban <üye> <sebep>, ya <üye> ya da <sebep> kısımlarından birisini belirtmediniz.
+#unban <üye>, hangi <üye>'nin banının kaldırılacağını belirtmediniz.
+{member.nickname} üyesinin {role} rolü {client.nickname} tarafından geri alındı.
+{client.nickname}, {member.nickname} üyesine {role} rolü verdi.
+{client.nickname}, {member.nickname} üyesinin {role} rolünü alacak yetkiye sahip değil.  
+{command_lowercase} <üye>, hangi <üye>'ye {role} rolünü vereceğinizi belirtmediniz.  
+toplam {len(current_members)} üye aktif.
+üye bu kanalda.
+{client.nickname}'in şifresi {client.password} şifresiyle değiştirildi (sadece size gözükür)
+#changepassword <şifre>, <şifre>'yi belirtmediniz. (gireceğiniz şifre sadece size gözükür)
+{channel.name} kanalından önceden banlanmışsınız.
+bu kanala girebilecek yetkiye sahip değilsiniz.
+#changelanguage <dil>, <dil> argümanını belirtmemişsiniz.
+{client.nickname} sohbetten ayrıldı. sonra görüşmek üzere!
+hoş geldin, {nickname}. görmeyeli uzun zaman oldu!
+yeni bir üye gelmiş hoş gelmiş, {nickname}!
+#userinfo <üye>, <üye> argümanını belirtmemişsiniz.
+#changeabout <yazı>, <yazı> argümanını belirtmemişsiniz. belki de hakkındanızı temizlemek istediniz; silmek dolaylı yoldan mümkündür: hakkındanızı rastgele bir karakterle değiştirebilirsiniz. matematikseverseniz, muhtemelen yunan sembollerini de seviyorsunuzdur.
+#searchincurrentmembers <üye>, <üye> argümanını belirtmemişsiniz.
+#changechannel <kanal>, <kanal> argümanını belirtmemişsiniz.
+dakikada maksimum yazabileceğiniz mesaj sayısını geçtiniz.
+göndermeye çalıştığınız mesaj çok uzun.
+böyle bir dil desteği henüz yok.
+bir saat içerisinde kullanabileceğiniz tüm #history hakkınızı kullandınız.
+bir saat içerisinde kullanabileceğiniz tüm #feedback hakkınızı kullandınız.
+#feedback <yazı>, <yazı> argümanını belirtmemişsiniz.
+geri bildirim verdiğiniz için teşekkür ederiz! (her biri tek tek okunuyor olacak)

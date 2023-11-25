@@ -1,0 +1,16 @@
+gechat istemcisine hoş geldiniz. mesajlaşmak için TCP gechat sunucusuna bağlanmanız gerekir. kurallar gechat sunucusundan çekilecektir.
+gechat adresini giriniz:\w
+kullanıcı adı seçiniz:\w
+kullanıcı adı gereklidir. kullanıcı adınızı girin.
+ya girdiğiniz kullanıcı adı çok fazla karakter içeriyor ya da kullanıcı adınız alfanumerik olmayan karakterler içeriyor.
+şifreniz ya çok karakter içeriyor.
+bağlantı başarılı.
+{nickname} banlanmış.\nban sebebi:\w{reason}
+girdiğiniz şifre yanlış. bağlantı kapatılıyor.
+bir şeyler ters gitti. bağlantı kapatılıyor.
+{nickname} kullanıcı adı için yeni hesap oluşturuyorsunuz. şifre:\w
+girdiğiniz şifre çok uzun, daha kısa bir şifre girmelisiniz.
+ya sunucudan atıldınız ya da bağlantı bir şekilde koptu.
+bir hata oluştu!
+{nickname}, şifre:\w
+aynı ip adresi başka bir üye tarafından kullanılmış.

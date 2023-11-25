@@ -1,0 +1,16 @@
+welcome to gechat client. to start chatting, you need to connect a TCP gechat server. rules will be fetched from gechat server.
+enter the gechat address:\w
+choose a nickname:\w
+nickname is a must. enter your nickname.
+you need something that has less characters than current nickname or nickname contains nonalphanumeric characters.
+you need something that has less characters than current password.
+connection is successful.
+{nickname} was banned before.\nban reason:\w{reason}
+given password is wrong. aborting current connection.
+something seems wrong. aborting current connection.
+create new account for {nickname}. password:\w
+you need something that has less characters than current password.
+either your host is kicked you or something wrong with the connection happened.4
+an error occurred!
+password for {nickname}:\w
+same ip address seems to be used by another member.

@@ -1,0 +1,27 @@
+gechat sunucusuna hoş geldin!
+şu anki komutlar şunlar:
+ - #help
+ - #logout
+ - #kick
+ - #ban
+ - #unban
+ - #giveadmin
+ - #givemoderator
+ - #takeadmin
+ - #takemoderator
+ - #currentmembers
+ - #servertime
+ - #searchincurrentmembers
+ - #changepassword
+ - #about
+ - #announcements
+ - #rules
+ - #changechannel
+ - #changeabout
+ - #userinfo
+ - #syncserver
+ - #history
+ - #feedback
+ - #channels
+
+not: sadece 'enter' tuşuna basmanız mesaj olarak kabul edilmez.
