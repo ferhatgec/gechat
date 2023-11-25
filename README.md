@@ -1,7 +1,7 @@
 # gechat protocol reference implementation
 note: gechat is still work in progress, using it in your server is in full of your responsibility.
 
-[gech@](logo.png)
+![gech@](logo.png)
 
 ## client overview:
 client part has three different messaging types:
