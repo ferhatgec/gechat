@@ -30,3 +30,6 @@ bir saat içerisinde kullanabileceğiniz tüm #history hakkınızı kullandını
 bir saat içerisinde kullanabileceğiniz tüm #feedback hakkınızı kullandınız.
 #feedback <yazı>, <yazı> argümanını belirtmemişsiniz.
 geri bildirim verdiğiniz için teşekkür ederiz! (her biri tek tek okunuyor olacak)
+#changechanneldescription <kanal> <açıklama>, <kanal> ve <açıklama> argümanlarını belirtmediniz.
+#changechanneldescription <kanal> <açıklama>, <açıklama> argümanını belirtmediniz.
+bu işlemi yapabilecek yetkiye sahip değilsiniz.

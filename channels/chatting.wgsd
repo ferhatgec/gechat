@@ -2,5 +2,6 @@ _ =
 	name; chatting;
 	available_to_these_roles;@user;
 	banned_users;;
-    channel_id;0;
+	channel_id;0;
+	description;good place for chatting;
 end; _;

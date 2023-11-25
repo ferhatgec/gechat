@@ -36,6 +36,22 @@ from pathlib import Path
 host = '127.0.0.1' # for testing localhost is by default. change it to specific ip or '0.0.0.0'
 port = 7538 # reserved port for gechat protocol.
 
+localization_msgs_lower_bound = 35
+languages = dict()
+
+for file in Path('l10n/').rglob('server.txt'):
+    data = []
+
+    with open(file, 'r', encoding='utf8') as file_stream:
+        for line in file_stream:
+            data.append(line)
+        
+        if len(data) < localization_msgs_lower_bound:
+            print(f'some localization messages are missing for {file.parts[len(file.parts) - 2]}.')
+            exit()
+
+        languages[file.parts[len(file.parts) - 2]] = data
+
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind((host, port))
 server.listen()
@@ -54,6 +70,7 @@ default_channel = 'chatting'
 server_settings = 'settings/server.wgsd'
 feedback_file = f'{history_path}feedbacks.txt'
 
+
 class ChannelData:
     def __init__(self,
                  name = '',
@@ -61,13 +78,17 @@ class ChannelData:
                  banned_users = [str],
                  channel_id = '',
                  
-                 wgsd_init: wgsd.wgsd = None):
+                 wgsd_init: wgsd.wgsd = None,
+                 
+                 description = ''):
         self.name = name
         self.available_to_these_roles = available_to_these_roles
         self.banned_users = banned_users
         self.channel_id = channel_id # permanent id for chat history. every message will be saved into channel_id.txt
-        
+
         self.wgsd_init = wgsd_init
+
+        self.description = description
 
     def return_itself(self):
         return self
@@ -99,6 +120,9 @@ class ChannelData:
 
                     case 'channel_id':
                         block.matched_datas[key] = self.channel_id
+
+                    case 'description':
+                        block.matched_datas[key] = self.description
         
         with open(f'{channels_path}{self.channel_id}.wgsd', 'w') as file_stream:
             lines = self.wgsd_init.generate()
@@ -238,8 +262,6 @@ database: [UserData] = []
 channel_list: [ChannelData] = []
 current_members: [UserData] = []
 
-languages = dict()
-
 settings = wgsd.wgsd()
 settings.parse_file(server_settings)
 
@@ -263,7 +285,8 @@ for file in Path(channels_path).rglob('*.wgsd'):
                     available_to_these_roles = x.find_key('_', 'available_to_these_roles').split(','),
                     banned_users = x.find_key('_', 'banned_users').split(','),
                     channel_id = x.find_key('_', 'channel_id'),
-                    wgsd_init = x).return_itself()
+                    wgsd_init = x,
+                    description = x.find_key('_', 'description')).return_itself()
                         
     channel_list.append(y)
         
@@ -282,14 +305,6 @@ for file in Path(users_path).rglob('*'):
     
     database.append(y)
 
-for file in Path('l10n/').rglob('server.txt'):
-    data = []
-
-    with open(file, 'r', encoding='utf8') as file_stream:
-        for line in file_stream:
-            data.append(line)
-
-        languages[file.parts[len(file.parts) - 2]] = data
 
 def broadcast(client: UserData, message: str, is_announcement = False, index = 0, repl_params: [str] = [], params: [str] = []):
     if client != None:
@@ -760,7 +775,8 @@ def handle(client: UserData):
                                                     available_to_these_roles = x.find_key('_', 'available_to_these_roles').split(','),
                                                     banned_users = x.find_key('_', 'banned_users').split(','),
                                                     channel_id = x.find_key('_', 'channel_id'),
-                                                    wgsd_init = x).return_itself()
+                                                    wgsd_init = x,
+                                                    description = x.find_key('_', 'description')).return_itself()
                         
                                     channel_list.append(y)
                         
@@ -795,11 +811,28 @@ def handle(client: UserData):
 
                             for channel in channel_list:
                                 if channel.name in _count:
-                                    _channels += f'{channel.name} ({_count[channel.name]})<nl>'
+                                    _channels += f'{channel.name} ({_count[channel.name]}): {channel.description}<nl>'
                                 else:
-                                    _channels += f'{channel.name} (0)<nl>'
+                                    _channels += f'{channel.name} (0): {channel.description}<nl>'
 
                             client._current_socket.send((f'@Channels{_channels}').encode('utf-8'))
+
+                        case '#changechanneldescription':
+                            if len(args) == 0:
+                                client._current_socket.send((f'@Error{str(languages[client.language][32])}').encode('utf-8'))
+                            elif len(args) == 1:
+                                client._current_socket.send((f'@Error{str(languages[client.language][33])}').encode('utf-8'))
+                            else:
+                                if any(role in client.roles for role in ['@admin', '@server']): 
+                                    channel_name = str(args[0]).lower().strip()
+
+                                    for channel in channel_list:
+                                        if channel.name == channel_name:
+                                            channel.description = ' '.join(args[1:]).lower().strip()
+                                            channel.rewrite()
+                                            break
+                                else:
+                                    client._current_socket.send((f'@Error{str(languages[client.language][34])}').encode('utf-8'))
                 else:
                     broadcast(client, message)
         except:
@@ -822,9 +855,16 @@ def receive():
         # asking for username, if it's not found in our database; user will receive new user ping.
         client.send('@NickRequired'.encode('utf-8'))
 
-        nickname = client.recv(8092).decode('utf-8').lower()
-
-        if len(nickname) > settings.find_key('_', 'nickname_length_limit') or (not nickname.isalnum()) or (' ' in nickname):
+        nickname = client.recv(8092).decode('utf-8').lower().strip()
+        
+        for user in current_members:
+            if user.nickname == nickname: # user logged in from another session.
+                client.send('@Logout'.encode('utf-8'))
+                continue
+        
+        if len(nickname) > settings.find_key('_', 'nickname_length_limit') \
+            or (not nickname.isalnum()) \
+            or (' ' in nickname):
             client.send('@UsernameLengthExceeded'.encode('utf-8'))
             client.close()
             continue
@@ -833,7 +873,7 @@ def receive():
         user_data = UserData()
 
         for user in database:
-            if (user.nickname == nickname) and not (nickname in current_members): # user found in our database and not logged in from another session.
+            if user.nickname == nickname:
                 client.send('@PasswordRequired'.encode('utf-8'))
                 is_user_found_in_db = True
                 user_data = user

@@ -104,6 +104,8 @@ class wgsd:
                     return self._pair_values(node.matched_datas[key])
                 else:
                     return ''
+        
+        return ''
 
     def _verify(self):
         pass

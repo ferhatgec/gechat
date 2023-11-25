@@ -23,5 +23,6 @@ current commands are:
  - #history
  - #feedback
  - #channels
+ - #changechanneldescription
 
 note: empty lines won't be accepted as message.

@@ -3,4 +3,5 @@ _ =
 	available_to_these_roles;@user;
 	banned_users;;
 	channel_id;1;
+	description;a good place to find programmers!;
 end; _;

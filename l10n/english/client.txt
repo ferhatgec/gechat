@@ -10,7 +10,7 @@ given password is wrong. aborting current connection.
 something seems wrong. aborting current connection.
 create new account for {nickname}. password:\w
 you need something that has less characters than current password.
-either your host is kicked you or something wrong with the connection happened.4
+either your host is kicked you or something wrong with the connection happened.
 an error occurred!
 password for {nickname}:\w
 same ip address seems to be used by another member.

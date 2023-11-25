@@ -30,3 +30,6 @@ you reached the maximum usage of #history in a hour.
 you reached the maximum usage of #feedback in a hour.
 #feedback <text>, you missed <text> argument.
 thank you for giving us bunch of feedbacks! (every one of them will be read)
+#changechanneldescription <channel> <description>, you missed <channel> and <description> argument.
+#changechanneldescription <channel> <description>, you missed <description> argument.
+you have not enough privileges to do that.

@@ -23,5 +23,6 @@ gechat sunucusuna hoş geldin!
  - #history
  - #feedback
  - #channels
+ - #changechanneldescription
 
 not: sadece 'enter' tuşuna basmanız mesaj olarak kabul edilmez.
