@@ -63,8 +63,22 @@ while len(nickname) == 0:
 if gechat_server == 'localhost':
     gechat_server = '127.0.0.1'
 
+port = input('port: ')
+
+while len(port) == 0:
+    port = input('port: ')
+
+if str(port).lower() == 'gechat' \
+    or str(port).lower() == 'default':
+    port = 7538
+else:
+    port = abs(int(port))
+
+if port > 65535:
+    port = 7538
+
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-client.connect((gechat_server, 7538)) # specific gechat port
+client.connect((gechat_server, port)) # specific gechat port
 
 socket_closed = False
 login_successful = False
